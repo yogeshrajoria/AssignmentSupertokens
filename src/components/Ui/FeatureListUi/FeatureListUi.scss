@@ -1,0 +1,105 @@
+body{
+    background-color: #141414;
+    font-family:  'Arimo', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+ul, li{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.col{
+    flex-direction: column;
+}
+.row{
+    flex-direction: row;
+}
+
+.grid{
+    margin: 10px auto;
+    width: 68%;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        background-image: linear-gradient(to bottom, rgb(34, 34, 34), rgb(85, 85, 85), rgb(34, 34, 34));
+        left: 50%;
+        opacity: 0.5;
+        @media all and (max-width: 60em) {
+            display: none;
+        }
+    }
+    .grid-item{
+        display: flex;
+        padding: 2rem;
+        position: relative;
+        align-items: center;
+        &:nth-of-type(even){
+            &:before {
+                content: '';
+                display: block;
+                position: absolute;
+                right: 0;
+                left: 0;
+                width: 100%;
+                background-image: linear-gradient(to left, #222, #555, #555);
+                bottom: 0;
+                opacity: 0.5;
+                height: .5px;
+            }
+        }
+        &:nth-of-type(odd){
+            &:before {
+                content: '';
+                display: block;
+                position: absolute;
+                right: 0;
+                left: 0;
+                width: 100%;
+                background-image: linear-gradient(to left, #555, #555, #222);
+                bottom: 0;
+                opacity: 0.5;
+                height: .5px;
+            }
+        }
+        &:last-child, &:nth-last-child(2){
+            &:before{
+                display: none;
+                @media all and (max-width: 60em) {
+                    display: block;
+                }
+            }
+        }
+        @media all and (min-width: 40em) {
+            width: 100%;
+        }
+        @media all and (min-width: 60em) {    
+            width: calc(50% - 4rem);
+        }
+    }
+    .grid-title{
+        color: rgb(255, 153, 51);
+        line-height: 22pt;
+        font-size: 18px;
+        flex: 1 0 auto;
+    }
+    .grid-desc{
+        line-height: 22pt;
+        color: #dddddd;
+        flex: 1 0 auto;
+    }
+    .grid-image{
+        margin-right: 2rem;
+        img{
+            width: 50px;
+            height: 50px;
+        }
+    }
+}
